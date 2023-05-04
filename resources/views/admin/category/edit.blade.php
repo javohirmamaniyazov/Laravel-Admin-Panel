@@ -152,8 +152,8 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
-                                <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Ozodbek</span>
+                                <img class="img-profile rounded-circle" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIIAAAB5CAMAAADCiAkVAAAAY1BMVEX///9APz9EQ0MxMDA3NjY7Ojo0MzP6+vq6urosKyskIyOdnZ0oJychICDv7+9oaGjLy8vi4uLV1dWUlJRhYWGJiYlTUlJbWlqurq5OTU1vbm7AwMB4d3cdGxukpKSCgoIXFRW8QGGdAAADl0lEQVRoge2ai5aiMAyGKW2hRahcBeTivP9TLujsDjpIG23onD3zv4CfaRKSv/W8X72s0FNZKpouzTMVugBQh+7SxlHs91UxitwBhKCBZGQW5yyQ0RCURZPtSTB+kEdxRiNZpXsR5Mk3gpsCehK7EIQX9gRhCoasc/Tfb/r6KcAVIm5wCRopOd9EICS6IAKoY6z5+atoj4eQt7oI3CQLNITj8zy8V4JVnWlkSECIj9Que7NjmEUrFILQKBc/xVDadXg0jwIJcMJQAhAIUQgE4QAhoBhN8unXaVXcR0AQEoJAEoSEHCkIAeMkigCEwBBqooIh8NI+AjAKhNlv0gcgwmAfoYGlI/mwj9DBihIDAdaaUBBgDZqQGGFm8GEILQICYGSZxI/2CbwRVJUY3dHLIWMTztfaA1VlhDK6bSyTK0IwHdJTCyHw/bNthrAGxWDSYHuhUcC2gLBTKVBXmMRb20O0AmXCJGZ9uQVtMrMS+37LATgvRPaLUpkv1rMwZkevAlUlw/B7UlCDDg4ICLCZRaI4LSdITSQYBF4DOAmGY7tlgChQJMfrYtwaeI1DMDVpaRYIHycZZ2XCpE3zMsM0w01mWJSW8KXUIB1oh4oQmiAgX1XpkwFliVlKv2BL9NshbZv2MVzPOwnNUkXxbiP+KtSEge9wYbnt+KCMKo9KN08CPxm1CNEeV7bbCBje809E2LbkdzmIbUuejjsgaJwOecbujtlZ16CZj5sODdPvVBznivBThZELbN9aWBAYrrasxppaKuNdhvkYtRmmJ4D9yoNSWM4I1dQxzGbhkvSdvfPIKma4xNxTRH5hJRShKAeo5/hPwVCLd0ORV5S+EIBFKCit3liusqZmwIu51VCwWrzUKVTX81cyYE08bitwVnQXDiwBjYLkCFj0lOgHW/9/IR5TswIJ0/ObCbihgJbaXqGak3y5Ak3E5emwGQph6qO8A0Fp/xQiOyboAFexZ9uGsFsCm4pWL/BG4L34e1ozxDqY0/6uVp78ZBYaMUjy27Tfo5bimvjDZyPfNRGuegwD8L2ODfGHGdfwTalVybsxIndA8OBKAR+w2RFvHafCrOWnonZxEEQuZxgX5zAlw8KyV6A3Ita0NAgzN1FY3qE56I2z+PkLweSiAwNhcW3QuUcQ7hGgbxkxENw0xyUC7PmaPYTzL8J9a4K+7v2PEC7uESrnCEHxi/AjEJZTkyuE8WchcN+FgpvP8QdK9z1yRhl2GgAAAABJRU5ErkJggg==">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -216,59 +216,60 @@
 
                         </div>
                         <div class="card-body">
-                            <form action="{{ url('admin/category') }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ url('admin/category/'.$category->id.'/update') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
-                                
-                                
                                 <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                        <label for="">Name</label>
-                                        <input type="text"  name="name" value="" class="form-control" >
-                                        @error('name') <small class="text-danger">{{ $message }}</small> @enderror
+                                    <div class=" col-md-6 mb-3">
+                                        <label for="Name">Name</label>
+                                        <input type="text" name="name" value="{{ $category->name }}" id="name" class="form-control">
+                                        @error('name') <small class="text-danger">{{ $message }}</small>@enderror
                                     </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="">Slug</label>
-                                        <input type="text" name="slug" class="form-control" id="">
-                                        @error('slug') <small class="text-danger">{{ $message }}</small> @enderror
+                                    <div class=" col-md-6 mb-3">
+                                        <label for="slug">Slug</label>
+                                        <input type="text" name="slug" value="{{ $category->slug }}" id="slug" class="form-control">
+                                         @error('slug') <small class="text-danger">{{ $message }}</small>@enderror
+                                    </div>
+                                    <div class=" col-md-12 mb-3">
+                                        <label for="description">Description</label>
+                                        <textarea type="text" name="description" rows="3" id="description" class="form-control">{{ $category->description }}</textarea>
+                                        @error('description') <small class="text-danger">{{ $message }}</small>@enderror
+                                    </div>
+                                    <div class=" col-md-6 mb-3">
+                                        <label for="image">Image</label>
+                                        <input type="file" name="image" id="image" class="form-control">
+                                        <img class="img-responsive mt-2" style="width:300px; height:200px;" alt="image" src="/Uploads/Category/{{$category->image}}">
+                                         @error('image') <small class="text-danger">{{ $message }}</small>@enderror
+                                    </div>
+                                    <div class=" col-md-6 mb-3">
+                                        <label for="status">Status</label><br />
+                                        <input type="checkbox" name="status" id="status">
+                                        @error('status') <small class="text-danger">{{ $message }}</small>@enderror
+                                    </div>
+                                    <div class="col-md-12 mb-5 mt-5">
+                                        <h3>SEO Tags</h3>
+                                    </div>
+                                    <div class=" col-md-12 mb-3">
+                                        <label for="meta_title">Meta_title</label>
+                                        <input type="text" value="{{ $category->meta_title }}" name="meta_title" id="meta_title" class="form-control">
+                                        @error('meta_title') <small class="text-danger">{{ $message }}</small>@enderror
+                                    </div>
+                                    <div class=" col-md-12 mb-3">
+                                        <label for="meta_keyword">Meta_Keyword</label>
+                                        <textarea type="text" name="meta_keyword" id="meta_keyword" rows="3" class="form-control">{{ $category->name }}</textarea>
+                                        @error('meta_keyword') <small class="text-danger">{{ $message }}</small>@enderror
+                                    </div>
+                                    <div class=" col-md-12 mb-3">
+                                        <label for="meta_description">Meta_description</label>
+                                        <textarea type="text" name="meta_description" id="meta_description" rows="3" class="form-control">{{ $category->name }}</textarea>
+                                        @error('meta_description') <small class="text-danger">{{ $message }}</small>@enderror
                                     </div>
                                     <div class="col-md-12 mb-3">
-                                        <label for="">Description</label>
-                                        <textarea  name="description" class="form-control" rows="3"></textarea>
-                                        @error('description') <small class="text-danger">{{ $message }}</small> @enderror
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="">Image</label>
-                                        <input type="file" name="image" class="form-control" id="">
-                                        @error('image') <small class="text-danger">{{ $message }}</small> @enderror
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="">Status</label></br>
-                                        <input type="checkbox" name="status">
-                                    </div>
-                                    <div class="col-md-12 mb-3">
-                                        <h4>SEO Tags</h4>
-                                    </div>
-                                    <div class="col-md-12 mb-3">
-                                        <label for="">Meta Title</label>
-                                        <input type="text" name="meta_title" class="form-control">
-                                        @error('meta_title') <small class="text-danger">{{ $message }}</small> @enderror
-                                    </div>
-                                    <div class="col-md-12 mb-3">
-                                        <label for="">Meta Keyword</label>
-                                        <textarea name="meta_keyword" class="form-control" rows="3"></textarea>
-                                        @error('meta_keyword') <small class="text-danger">{{ $message }}</small> @enderror
-                                    </div>
-                                    <div class="col-md-12 mb-3">
-                                        <label for="">Meta Description</label>
-                                        <input  name="meta_description" class="form-control" rows="3">
-                                        @error('meta_description') <small class="text-danger">{{ $message }}</small> @enderror
-                                    </div>
-                                    <div class="col-md-12 mb-3">
-                                            <button type="submit"  class="btn btn-primary float-end">Save</button>
+                                        <button type="submit" class="btn btn-primary text-white float-end">Update</button>
                                     </div>
                                 </div>
                             </form>
                         </div>
+               
                     </div>
                 </div>
             </div>

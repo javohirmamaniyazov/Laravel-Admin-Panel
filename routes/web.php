@@ -24,7 +24,9 @@ Route::prefix('admin')->group(function () {
     // CATEGORY Routes
     Route::get('/category',[CategoryController::class,'index']);
     Route::get('/category/create',[CategoryController::class,'create']);
-    Route::post('category', [CategoryController::class, 'store']);
+    Route::post('category', [CategoryController::class,'store']);
     Route::get('/category/{category}/edit', [CategoryController::class, 'edit']);
+    Route::post('/category/{category}/update', [CategoryController::class, 'update']);
+    Route::any('category/{category}/delete', [CategoryController::class, 'delete']);
 
 });
