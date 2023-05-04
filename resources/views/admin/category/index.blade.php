@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,23 +10,27 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <link href="{{asset('admin/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('admin/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
-    <link href="{{asset('admin/css/sb-admin-2.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('admin/css/sb-admin-2.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
 
     @livewireStyles
 </head>
-<body id="page-top"> 
+
+<body id="page-top">
     <div id="wrapper">
-        <ul class="navbar-nav sidebar sidebar-success accordion" style="background-color: #1cc88a!important" id="accordionSidebar">
-            <a class="sidebar-brand d-flex align-items-center m-1 justify-content-center" href="{{url('/admin/dashboard')}}">
+        <ul class="navbar-nav sidebar sidebar-success accordion" style="background-color: #1cc88a!important"
+            id="accordionSidebar">
+            <a class="sidebar-brand d-flex align-items-center m-1 justify-content-center"
+                href="{{ url('/admin/dashboard') }}">
                 <div class="sidebar-brand-icon">
                     <h3>👨‍💻</h3>
                 </div>
-                <div class="sidebar-brand-text" style="color: black; font-weight: 600; margin-left:10px">Admin <sup>1</sup></div>
+                <div class="sidebar-brand-text" style="color: black; font-weight: 600; margin-left:10px">Admin
+                    <sup>1</sup></div>
             </a>
 
             <!-- Divider -->
@@ -33,15 +38,15 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item text-dark">
-                <a class="nav-link" href="{{url('/admin/dashboard')}}">
+                <a class="nav-link" href="{{ url('/admin/dashboard') }}">
                     <i style="color: black;" class="fas fa-fw fa-tachometer-alt"></i>
-                    <span style="color: black;" >Dashboard</span></a>
+                    <span style="color: black;">Dashboard</span></a>
             </li>
 
             <hr class="sidebar-divider">
 
             <li class="nav-item">
-                <a class="nav-link" href="{{url('admin/category')}}">
+                <a class="nav-link" href="{{ url('admin/category') }}">
                     <i style="color: black;" class="fas fa-fw fa-cog"></i>
                     <span style="color: black;">Categoriya</span></a>
             </li>
@@ -50,7 +55,7 @@
             <hr class="sidebar-divider">
 
             <!-- Nav Item - Pages Collapse Menu -->
-          
+
             <li class="nav-item">
                 <a class="nav-link" href="Royxat.html">
                     <i style="color: black;" class="fas fa-fw fa-users"></i>
@@ -103,8 +108,8 @@
                     <form
                         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                                aria-label="Search" aria-describedby="basic-addon2">
+                            <input type="text" class="form-control bg-light border-0 small"
+                                placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
                                 <button class="btn" style="background-color: #1cc88a" type="button">
                                     <i class="fas fa-search fa-sm"></i>
@@ -165,7 +170,8 @@
                                     Activity Log
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                <a class="dropdown-item" href="#" data-toggle="modal"
+                                    data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>
@@ -178,32 +184,8 @@
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-                <div class="container-fluid">
-                    <button type="button" class="btn btn-primary ml-5" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        📂 Add Category
-                    </button>
-
-                    <div class="con ml-5">
-                        <a href="./product.html">
-                            <div class="card m-3 float-left" style="width: 18rem;">
-                                <img src="https://avatars.mds.yandex.net/i?id=9f0e7867b63bc0dfa207178d50607e040a7e2439-9067770-images-thumbs&n=13"
-                                    class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h3 class="text-center">Category</h3>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="./product.html">
-                            <div class="card m-3 float-left" style="width: 18rem;">
-                                <img src="https://avatars.mds.yandex.net/i?id=9f0e7867b63bc0dfa207178d50607e040a7e2439-9067770-images-thumbs&n=13"
-                                    class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h3 class="text-center">Category</h3>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-
+                <div>
+                    <livewire:admin.category.index/>
                 </div>
             </div>
             <!-- End of Main Content -->
@@ -240,7 +222,8 @@
 
 
     <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    {{-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -257,8 +240,8 @@
                             </div>
                             <div class="form-group">
                                 <label for="product-image">Category Image</label>
-                                <input type="file" class="form-control-file" id="product-image" name="product-image"
-                                    accept="image/*" required>
+                                <input type="file" class="form-control-file" id="product-image"
+                                    name="product-image" accept="image/*" required>
                             </div>
                             <button type="submit" class="btn btn-primary">Add Product</button>
                         </form>
@@ -270,8 +253,8 @@
                 </div>
             </div>
         </div>
-    </div>
- 
+    </div> --}}
+
 
 
     <script src="{{ asset('admin/vendor/jquery/jquery.min.js') }}"></script>
@@ -282,6 +265,7 @@
 
     <!-- Custom scripts for all pages-->
     <script src="{{ asset('admin/js/sb-admin-2.min.js') }}"></script>
-    <script src="{{ asset('assets/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
 </body>
+
 </html>

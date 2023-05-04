@@ -17,7 +17,14 @@ Route::prefix('admin')->group(function () {
     Route::get('/', function () {
         return view('welcome');
     });
-    Route::get('/category',[CategoryController::class,'index']);
-    
+
+    //DASHBOARD Route
     Route::get('dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index']);
+
+    // CATEGORY Routes
+    Route::get('/category',[CategoryController::class,'index']);
+    Route::get('/category/create',[CategoryController::class,'create']);
+    Route::post('category', [CategoryController::class, 'store']);
+    Route::get('/category/{category}/edit', [CategoryController::class, 'edit']);
+
 });
