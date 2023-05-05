@@ -28,27 +28,31 @@
             </button>
         </a>
 
-        <div class="con ml-5">
-            @foreach ($categories as $category)
-                <a href="{{ url('admin/category/' . $category->id . '/edit') }}">
-                    <div class="card m-3 float-left" style="width: 17rem;">
-                        <img src="{{ asset('Uploads/Category/' . $category->image) }}" class="card-img-top"
-                            width="55px" height="230px" alt="{{ $category->name }}">
-                        <div class="card-body">
-                            <h3 class="text-center">{{ $category->name }}</h3>
-                            <div class="float-end">
-                                <a href="{{ url('admin/category/' . $category->id . '/edit') }}"
-                                    class="btn btn-warning">Edit</a>
-                                <a href="{{ url('admin/category/' . $category->id . '/delete') }}"
-                                    onclick="return confirm('Are you sure you want to delete this Category?')"
-                                    class="btn btn-danger ">Delete</a>
+        @if (count($categories) > 0)
+            <div class="con ml-5">
+                @foreach ($categories as $category)
+                    <a href="{{ url('admin/category/' . $category->id . '/edit') }}" style="text-decoration: none;">
+                        <div class="card m-3 float-left" style="width: 17rem;">
+                            <img src="{{ asset('Uploads/Category/' . $category->image) }}" class="card-img-top"
+                                width="55px" height="230px" alt="{{ $category->name }}">
+                            <div class="card-body">
+                                <h3 class="text-center" >{{ $category->name }}</h3>
+                                <div class="float-end">
+                                    <a href="{{ url('admin/category/' . $category->id . '/edit') }}"
+                                        class="btn btn-warning">Edit</a>
+                                    <a href="{{ url('admin/category/' . $category->id . '/delete') }}"
+                                        onclick="return confirm('Are you sure you want to delete this Category?')"
+                                        class="btn btn-danger ">Delete</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </a>
-            @endforeach
+                    </a>
+                @endforeach
 
-        </div>
+            </div>
+        @else
+            <p class="display-5 text-center" style="margin-top: 15%">No categories found.</p>
+        @endif
 
     </div>
 

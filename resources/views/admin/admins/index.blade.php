@@ -15,22 +15,18 @@
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
     <link href="{{ asset('admin/css/sb-admin-2.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
 
     @livewireStyles
 </head>
 
 <body id="page-top">
     <div id="wrapper">
-        <ul class="navbar-nav sidebar sidebar-success accordion" style="background-color: #1cc88a!important"
-            id="accordionSidebar">
-            <a class="sidebar-brand d-flex align-items-center m-1 justify-content-center"
-                href="{{ url('/admin/dashboard') }}">
+        <ul class="navbar-nav bg-success sidebar sidebar-dark accordion" id="accordionSidebar">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
                 <div class="sidebar-brand-icon">
                     <h3>👨‍💻</h3>
                 </div>
-                <div class="sidebar-brand-text" style="color: black; font-weight: 600; margin-left:10px">Admin
-                    <sup>1</sup></div>
+                <div class="sidebar-brand-text mx-3" style="color: black;">Admin <sup>1</sup></div>
             </a>
 
             <!-- Divider -->
@@ -38,7 +34,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item text-dark">
-                <a class="nav-link" href="{{ url('/admin/dashboard') }}">
+                <a class="nav-link" href="{{url('/admin/dashboard')}}">
                     <i style="color: black;" class="fas fa-fw fa-tachometer-alt"></i>
                     <span style="color: black;">Dashboard</span></a>
             </li>
@@ -46,7 +42,7 @@
             <hr class="sidebar-divider">
 
             <li class="nav-item">
-                <a class="nav-link" href="{{ url('admin/category') }}">
+                <a class="nav-link" href="{{url('admin/category')}}">
                     <i style="color: black;" class="fas fa-fw fa-cog"></i>
                     <span style="color: black;">Categoriya</span></a>
             </li>
@@ -81,6 +77,7 @@
 
         </ul>
         <!-- End of Sidebar -->
+
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
 
@@ -102,7 +99,7 @@
                             <input type="text" class="form-control bg-light border-0 small"
                                 placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
-                                <button class="btn" style="background-color: #1cc88a" type="button">
+                                <button class="btn btn-success" type="button">
                                     <i class="fas fa-search fa-sm"></i>
                                 </button>
                             </div>
@@ -127,7 +124,7 @@
                                             placeholder="Search for..." aria-label="Search"
                                             aria-describedby="basic-addon2">
                                         <div class="input-group-append">
-                                            <button class="btn" style="background-color: #1cc88a" type="button">
+                                            <button class="btn btn-success" type="button">
                                                 <i class="fas fa-search fa-sm"></i>
                                             </button>
                                         </div>
@@ -175,9 +172,44 @@
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-                <div>
-                    <livewire:admin.category.index/>
+                <div class="container-fluid">
+
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Malumotlar</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Ismi</th>
+                                            <th>Familya</th>
+                                            <th>Telefon r.</th>
+                                            <th>Sana</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Ozodbek</td>
+                                            <td>Shodiboyev</td>
+                                            <td>99 999 99 00</td>
+                                            <td>3/5/2023</td>
+                                        </tr>
+                                    </tbody>
+                                    <button class=" btn-primary w-25 m-2 btn ">👨‍💻 Add Admin</button>
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
+                <!-- /.container-fluid -->
+
             </div>
             <!-- End of Main Content -->
         </div>
@@ -212,42 +244,7 @@
     </div>
 
 
-    <!-- Modal -->
-    {{-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3 class="modal-title" id="exampleModalLabel">Add Category</h3>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="container">
-                        <form>
-                            <div class="form-group">
-                                <label for="product-name">Category Name</label>
-                                <input type="text" class="form-control" id="product-name" name="product-name"
-                                    placeholder="Enter product name" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="product-image">Category Image</label>
-                                <input type="file" class="form-control-file" id="product-image"
-                                    name="product-image" accept="image/*" required>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Add Product</button>
-                        </form>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
-                </div>
-            </div>
-        </div>
-    </div> --}}
-
-
-
+    <!-- Bootstrap core JavaScript-->
     <script src="{{ asset('admin/vendor/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('admin/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
@@ -256,7 +253,6 @@
 
     <!-- Custom scripts for all pages-->
     <script src="{{ asset('admin/js/sb-admin-2.min.js') }}"></script>
-    <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
 </body>
 
 </html>

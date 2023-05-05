@@ -1,5 +1,7 @@
 <?php
 
+use App\Category;
+use App\Http\Controllers\Admin\AdminsController;
 use App\Http\Controllers\Admin\CategoryController;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
@@ -28,5 +30,9 @@ Route::prefix('admin')->group(function () {
     Route::get('/category/{category}/edit', [CategoryController::class, 'edit']);
     Route::post('/category/{category}/update', [CategoryController::class, 'update']);
     Route::any('category/{category}/delete', [CategoryController::class, 'delete']);
+
+    // ADMINs Route
+
+    Route::get('/admins', [AdminsController::class, 'index']);
 
 });

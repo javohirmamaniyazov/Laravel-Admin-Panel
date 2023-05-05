@@ -58,22 +58,12 @@
             <!-- Nav Item - Pages Collapse Menu -->
 
             <li class="nav-item">
-                <a class="nav-link" href="Royxat.html">
+                <a class="nav-link" href="{{url('admin/admins')}}">
                     <i style="color: black;" class="fas fa-fw fa-users"></i>
                     <span style="color: black;">Admins</span></a>
             </li>
 
             <hr class="sidebar-divider">
-
-            <!-- Nav Item - Charts -->
-            <li class="nav-item">
-                <a class="nav-link" href="charts.html">
-                    <i style="color: black;" class="fas fa-fw fa-chart-area"></i>
-                    <span style="color: black;">Statistika</span></a>
-            </li>
-
-            <hr class="sidebar-divider">
-
             <!-- Nav Item - Tables -->
             <li class="nav-item">
                 <a class="nav-link" href="zakaz.html">
